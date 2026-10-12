@@ -1,27 +1,163 @@
-# TIQ World – Freelancer UX redesign (design mock)
+# TIQ World — Freelancer UX Redesign Prototype
 
-Static HTML/CSS/JS prototype. Dummy data only, no backend, no credentials.
+**One Platform. Better Navigation. More Opportunities.**
 
-Entry point: `index.html` (Home feed). Design docs: `compare.html`, `ia.html`, `rationale.html`, `mobile.html`.
+A responsive, LinkedIn-inspired UX redesign prototype for the TIQ World Freelancer (professional) consumer application. This project explores how persistent navigation, job discovery, learning resources, and professional profiles can make the freelancer experience easier to navigate and more engaging.
 
-## Publish to GitHub Pages
-1. Create a separate repo (e.g. `tiq-freelancer-ux-mock`), not the consumer-app repo.
-2. Copy these files to the repo root and push to `main`.
-3. Repo Settings > Pages > Source: Deploy from a branch > `main` / root.
-4. Post the URL `https://<org>.github.io/tiq-freelancer-ux-mock/` on the task.
+## 🎯 Project Objective
 
-## Insights page (added 12 Oct)
-`insights.html` is a clickable analytics page: five tabs, about 20 charts, slicers that cross-filter every chart, drill-down modals, a table view per chart and a Sample / My-current-data switch.
-Files: `assets/insights.js`, `assets/insights-data.js` (dummy data, global `INSDATA`), `assets/insights.css`, `assets/vendor/chart.umd.js` (Chart.js 4.4.1, bundled so it works offline).
-Note: `assets/data.js` (global `TIQDATA`) feeds the Home, Jobs and Job-detail pages and was rebuilt on 12 Oct after an accidental overwrite, so its dummy jobs may differ from the earlier version.
+Redesign the existing dashboard-focused freelancer experience into a connected professional platform where users can discover jobs, access training, complete assessments, manage certificates, and explore their professional activities with minimal navigation.
 
-## v3 (12 Oct 2026): LinkedIn-inspired Home + light/dark theme
-- **Run locally:** `cd tiq-mock && python3 -m http.server 8000`, then open http://localhost:8000/ (opening index.html directly also works).
-- **Theme:** sun/moon button in the top bar (mobile: top-right). Saved in `localStorage` key `tiq-theme`; first visit follows the system setting. Tokens live in `assets/style.css` (`:root` dark, `:root[data-theme="light"]`). `assets/theme.js` is loaded in every page `<head>`.
-- **Home (`index.html`, `assets/home.css`):** welcome banner, 7 clickable summary cards, activity overview, schedule, continue learning, recommended jobs (filters), recent activity, quick actions. Removed invented KPIs (15 applications this month, profile views).
-- **New:** `certificates.html`. **Dummy data added** to `assets/data.js` (contracts, interviews, training, assessments, certificates, profile); `work.html`, `learn.html`, `profile.html` read it.
-- Charts (`charts.js`, Insights) read theme colours and redraw on theme change.
-- All data is dummy. Publishing to GitHub Pages is still a manual step (see above).
+**Project scope:** UI/UX design and static prototype only. No production application or backend modifications.
 
-## v3.1: Work analytics band on Home
-`assets/home-charts.js` + `assets/insights-data.js`: KPI tiles with deltas and sparklines, applications-over-time line with a 7D/30D/6M/1Y date range, work-mode donut, skills bars and employment-type columns. Click any slice/bar/column (or press Enter) to filter every chart; chips show active filters. Data is invented sample data and labelled as such.
+## ✨ Key Features
+
+- **Home / Feed:** Personalized-style updates, recommended jobs, learning progress, and quick links.
+- **Jobs:** Browse job listings, explore job details, filter opportunities, and interact with saved-job controls.
+- **Training:** Explore learning resources and course recommendations.
+- **Assessments:** View assessment availability and learning progress.
+- **Certificates:** Access a dedicated certificate and credential section.
+- **Professional Profile:** Display skills, experience, achievements, and learning progress.
+- **Contracts & Interviews:** Dedicated navigation for professional workflows.
+- **Messages & Notifications:** Centralized access to communication and activity updates.
+- **Wiki / AI Assistant:** An interface for exploring help and knowledge resources.
+- **Responsive Design:** Layouts designed for desktop, tablet, and mobile.
+- **UX Documentation:** Competitor comparison, information architecture, navigation mapping, and design rationale.
+
+*Features and interactions are prototype representations. Actual availability and implementation status depend on the final prototype.*
+
+## 🧭 Proposed Navigation
+
+```text
+TIQ World
+├── Home / Feed
+├── Jobs
+│   ├── Browse Jobs
+│   └── Job Details
+├── Training
+├── Assessments
+├── Certificates
+├── Contracts
+├── Interviews
+├── Messages
+├── Wiki / AI Assistant
+├── Notifications
+└── Profile
+```
+
+The proposed information architecture aims to make every existing freelancer feature accessible within two clicks from the main navigation.
+
+## 🔍 UX Research
+
+The design draws inspiration from professional networking, recruitment, and learning platforms.
+
+### Industry References
+- [OneStopNDT](https://onestopndt.com/)
+- [NDT Worldwide](https://ndtworldwide.com/)
+- [Energy JobSearch](https://energyjobsearch.com/jobs?title=oil+and+gas+jobs)
+
+### General Platform References
+- [LinkedIn](https://www.linkedin.com/)
+- [Upwork](https://www.upwork.com/)
+- [Coursera](https://www.coursera.org/)
+
+The comparison documentation summarizes relevant navigation patterns, discovery experiences, profile structures, and potential design improvements for TIQ World.
+
+## 🛠️ Technology Stack
+
+- HTML5
+- CSS3
+- JavaScript
+- Responsive CSS media queries
+- Git and GitHub
+- GitHub Pages
+
+The prototype uses static frontend files and dummy data. It does not require a backend to demonstrate its navigation and interface concepts.
+
+## 📱 Responsive Experience
+
+The design aims to support:
+
+- Persistent and intuitive desktop navigation.
+- Compact mobile navigation.
+- Responsive content cards and layouts.
+- Touch-friendly controls.
+- Readable typography and accessible color contrast.
+
+## 📂 Project Structure
+
+The exact structure depends on the files included in the prototype.
+
+```text
+tiq-freelancer-ux-prototype/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── pages/
+│   ├── jobs.html
+│   ├── training.html
+│   ├── profile.html
+│   ├── certificates.html
+│   └── documentation.html
+├── assets/
+└── README.md
+```
+
+*This is a suggested structure. Update it to match the actual repository files.*
+
+## 🚀 Run Locally
+
+1. Clone or download this repository.
+2. Open the project folder in Visual Studio Code.
+3. Open `index.html` in a browser, or use the VS Code Live Server extension.
+4. Navigate through the prototype and test its interactions.
+
+No backend setup is required for the static prototype.
+
+## 🌐 GitHub Pages Deployment
+
+1. Open the repository on GitHub.
+2. Navigate to **Settings → Pages**.
+3. Under Build and deployment, select **Deploy from a branch**.
+4. Select the `main` branch and the `/ (root)` folder, if `index.html` is at the root.
+5. Save the settings and wait for deployment.
+
+The published website will be available at:
+
+`https://YOUR-USERNAME.github.io/tiq-freelancer-ux-prototype/`
+
+Replace `YOUR-USERNAME` with the GitHub account name and use the actual published URL when sharing the project.
+
+## 📑 Documentation
+
+The prototype includes or is intended to include:
+
+- Current freelancer UX audit.
+- Competitor comparison.
+- Before-and-after navigation map.
+- Proposed information architecture.
+- Design rationale.
+- Existing feature reuse and potential backend impact.
+
+## 🔒 Privacy and Scope
+
+- Dummy data only.
+- No production credentials or API tokens.
+- No real user information.
+- No production code changes.
+- Static prototype for design review and feedback.
+
+## 🎯 Expected Outcome
+
+A more discoverable, consistent, and responsive freelancer experience that brings job opportunities, learning resources, professional credentials, and account features into one coherent navigation system.
+
+**Next step:** Review the prototype with Raghavan before beginning any production implementation.
+
+---
+
+**Project:** TIQ World Freelancer UX Redesign  
+**Deliverable:** Clickable HTML/CSS/JavaScript prototype  
+**Hosting:** GitHub Pages  
+**Status:** Design prototype — pending review and approval
