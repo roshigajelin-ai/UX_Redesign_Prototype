@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insights · TIQ World (design mock)</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/insights.css"></head>
+<body data-page="insights">
+<main class="wrap">
+ <div class="row between wrapflex" style="margin-bottom:12px;gap:12px">
+  <div><h1>Insights <span class="sample">SAMPLE DATA</span></h1>
+   <div class="sub sm">Click any bar, slice, stage or card to filter or drill down. Everything on this page is invented dummy data.</div></div>
+  <div class="row">
+   <div class="seg" role="group" aria-label="Data source"><button id="d-sample" class="on" aria-pressed="true">Sample data</button><button id="d-real" aria-pressed="false">My current data</button></div>
+   <button class="btn line sm" onclick="window.print()">Print / PDF</button>
+  </div>
+ </div>
+
+ <details class="card ins-slicers" id="slicers" open style="margin-bottom:14px">
+  <summary>Slicers <span class="cnt" id="fcount" hidden>0</span><button class="btn ghost sm" id="clear" type="button" style="margin-left:8px" hidden>Clear all</button></summary>
+  <div class="body" id="slicerBody"></div>
+ </details>
+
+ <div class="tabs" data-group="v" role="tablist">
+  <button data-t="overview">Overview</button><button data-t="jobs">Jobs market</button><button data-t="applications">Applications</button><button data-t="learning">Learning</button><button data-t="credentials">Credentials &amp; spend</button>
+ </div>
+
+ <!-- OVERVIEW -->
+ <section class="panel stackp" data-group="v" id="overview">
+  <div class="g6" id="kpis" style="margin-bottom:14px"></div>
+  <div class="g2" style="margin-bottom:14px">
+   <div class="card span2">
+    <div class="head"><h2>Applications over time</h2>
+     <div class="row"><div class="seg" id="rangeSeg" role="group" aria-label="Date range"><button data-r="7D">7D</button><button data-r="30D">30D</button><button data-r="6M">6M</button><button data-r="1Y" class="on">1Y</button></div><button class="tblbtn" data-chart="c-trend">Table</button></div></div>
+    <div class="chartbox"><canvas id="c-trend" role="img" aria-label="Applications over time"></canvas><div class="empty" id="e-c-trend" hidden></div></div>
+   </div>
+  </div>
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Application funnel</h2><span class="xs sub">click a stage</span></div><div class="fun" id="fun"></div><div class="empty" id="e-fun" hidden style="position:static;height:200px"></div></div>
+   <div class="card"><div class="head"><h2>Career readiness</h2></div>
+    <div class="gauge"><canvas id="c-gauge" role="img" aria-label="Career readiness gauge"></canvas><div class="mid"><b id="gscore">0</b><span class="sub">%</span></div></div>
+    <div id="rbars" style="margin-top:10px"></div>
+    <p class="note" id="rformula"></p></div>
+   <div class="card"><div class="head"><h2>Skill gap</h2><button class="tblbtn" data-chart="c-gap">Table</button></div>
+    <div class="chartbox"><canvas id="c-gap" role="img" aria-label="Your proficiency versus market demand"></canvas></div>
+    <p class="note">Both bars use a 0–100 index: market demand (most-requested skill = 100) and your self-declared proficiency.</p></div>
+  </div>
+  <div class="card" id="nba"></div>
+ </section>
+
+ <!-- JOBS MARKET -->
+ <section class="panel" data-group="v" id="jobs">
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Jobs by NDT skill</h2><button class="tblbtn" data-chart="c-skill">Table</button></div><div class="chartbox"><canvas id="c-skill" role="img" aria-label="Jobs by skill"></canvas></div></div>
+   <div class="card"><div class="head"><h2>Jobs by industry</h2><button class="tblbtn" data-chart="c-industry">Table</button></div><div class="chartbox"><canvas id="c-industry" role="img" aria-label="Jobs by industry"></canvas></div></div>
+   <div class="card"><div class="head"><h2>Work mode</h2><button class="tblbtn" data-chart="c-mode">Table</button></div><div class="chartbox"><canvas id="c-mode" role="img" aria-label="Jobs by work mode"></canvas></div></div>
+  </div>
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Employment type</h2><button class="tblbtn" data-chart="c-type">Table</button></div><div class="chartbox"><canvas id="c-type" role="img" aria-label="Jobs by employment type"></canvas></div></div>
+   <div class="card"><div class="head"><h2>Jobs by location</h2><button class="tblbtn" data-chart="c-loc">Table</button></div><div class="chartbox"><canvas id="c-loc" role="img" aria-label="Jobs by location"></canvas></div></div>
+   <div class="card"><div class="head"><h2>Match distribution</h2><button class="tblbtn" data-chart="c-match">Table</button></div><div class="chartbox"><canvas id="c-match" role="img" aria-label="Jobs by match percentage"></canvas></div></div>
+  </div>
+  <div class="g2" style="margin-bottom:14px">
+   <div class="card span2"><div class="head"><h2>New jobs posted per week</h2><button class="tblbtn" data-chart="c-posted">Table</button></div><div class="chartbox short"><canvas id="c-posted" role="img" aria-label="New jobs per week"></canvas></div></div>
+  </div>
+  <div class="card"><div class="head"><h2>Best matches for your filters</h2><span class="xs sub">click a row for details</span></div><div class="tblwrap" style="border:0"><table id="jobtbl"></table></div></div>
+ </section>
+
+ <!-- APPLICATIONS -->
+ <section class="panel" data-group="v" id="applications">
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Application status</h2><button class="tblbtn" data-chart="c-status">Table</button></div><div class="chartbox"><canvas id="c-status" role="img" aria-label="Applications by status"></canvas><div class="empty" id="e-c-status" hidden></div></div></div>
+   <div class="card"><div class="head"><h2>Applications by skill</h2><button class="tblbtn" data-chart="c-appskill">Table</button></div><div class="chartbox"><canvas id="c-appskill" role="img" aria-label="Applications by skill"></canvas><div class="empty" id="e-c-appskill" hidden></div></div></div>
+   <div class="card"><div class="head"><h2>Stage conversion</h2></div><div id="conv"></div></div>
+  </div>
+  <div class="card"><div class="head"><h2>Your applications</h2><span class="xs sub">click a row for the job</span></div><div class="tblwrap" style="border:0"><table id="apptbl"></table></div></div>
+ </section>
+
+ <!-- LEARNING -->
+ <section class="panel" data-group="v" id="learning">
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Course progress</h2></div><div id="courses"></div></div>
+   <div class="card"><div class="head"><h2>Learning status</h2><button class="tblbtn" data-chart="c-lstatus">Table</button></div><div class="chartbox"><canvas id="c-lstatus" role="img" aria-label="Courses by status"></canvas></div></div>
+   <div class="card"><div class="head"><h2>Weekly learning hours</h2><button class="tblbtn" data-chart="c-hours">Table</button></div><div class="chartbox"><canvas id="c-hours" role="img" aria-label="Learning hours per week"></canvas><div class="empty" id="e-c-hours" hidden></div></div></div>
+  </div>
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Skills before vs after training</h2><button class="tblbtn" data-chart="c-radar">Table</button></div><div class="chartbox tall"><canvas id="c-radar" role="img" aria-label="Skill levels before and after training"></canvas><div class="empty" id="e-c-radar" hidden></div></div></div>
+   <div class="card"><div class="head"><h2>Study activity</h2><span class="xs sub">last 12 weeks</span></div><div class="heat" id="heat" role="img" aria-label="Study activity heatmap"></div>
+    <div class="legrow"><span>Less</span><span><i class="sw" style="background:var(--heat0)"></i><i class="sw" style="background:var(--heat1)"></i><i class="sw" style="background:var(--heat2)"></i><i class="sw" style="background:var(--heat3)"></i><i class="sw" style="background:var(--heat4)"></i></span><span>More</span></div></div>
+   <div class="card"><div class="head"><h2>Schedule</h2><a href="learn.html#training">Open Learn</a></div><div class="timeline" id="sched"></div></div>
+  </div>
+ </section>
+
+ <!-- CREDENTIALS -->
+ <section class="panel" data-group="v" id="credentials">
+  <div class="g4" id="spendkpi" style="margin-bottom:14px"></div>
+  <div class="g3" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Assessment scores by attempt</h2><button class="tblbtn" data-chart="c-score">Table</button></div><div class="chartbox"><canvas id="c-score" role="img" aria-label="Assessment scores by attempt"></canvas><div class="empty" id="e-c-score" hidden></div></div><p class="note">Pass mark: 70%.</p></div>
+   <div class="card"><div class="head"><h2>Skill performance</h2><button class="tblbtn" data-chart="c-perf">Table</button></div><div class="chartbox"><canvas id="c-perf" role="img" aria-label="Assessment score by skill area"></canvas><div class="empty" id="e-c-perf" hidden></div></div></div>
+   <div class="card"><div class="head"><h2>Spend by category</h2><button class="tblbtn" data-chart="c-spend">Table</button></div><div class="chartbox"><canvas id="c-spend" role="img" aria-label="Spend by category"></canvas><div class="empty" id="e-c-spend" hidden></div></div></div>
+  </div>
+  <div class="g2" style="margin-bottom:14px">
+   <div class="card"><div class="head"><h2>Monthly spend</h2><button class="tblbtn" data-chart="c-month">Table</button></div><div class="chartbox short"><canvas id="c-month" role="img" aria-label="Spend per month"></canvas><div class="empty" id="e-c-month" hidden></div></div></div>
+   <div class="card"><div class="head"><h2>Certificates</h2><span class="xs sub">click for preview</span></div><div class="certs" id="certs"></div></div>
+  </div>
+ </section>
+</main>
+
+<div class="ins-modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mt">
+ <div class="mbox"><div class="mhead"><b id="mt"></b><button id="mx" type="button" aria-label="Close">✕</button></div><div id="mb"></div></div>
+</div>
+
+<script src="assets/vendor/chart.umd.js"></script>
+<script src="assets/insights-data.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/insights.js"></script>
+</body></html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Learn · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="learn">
+<main class="wrap">
+ <h1>Learn</h1><div class="sub sm" style="margin-bottom:14px">Training, assessments, certificates and what you have invested, in one place.</div>
+ <div class="tabs" data-group="l"><button data-t="training">My training</button><button data-t="catalog">Catalog</button><button data-t="assessments">Assessments</button><button data-t="certificates">Certificates</button><button data-t="investments">Investments</button></div>
+
+ <section class="panel" data-group="l" id="training">
+  <div class="cols two">
+   <div class="stack">
+    <div class="card"><div class="chips" style="margin-bottom:12px"><span class="chip on">All 1</span><span class="chip">Enrolled 1</span><span class="chip">In progress 0</span><span class="chip">Upcoming 1</span><span class="chip">Completed 0</span></div>
+     <div class="item"><div class="logo-sq">MT</div><div class="grow"><b>Magnetic Particle Testing</b><div class="sub sm">TIQ World Training · Non Destructive Testing</div><div class="sub sm">04 Dec 2026 · Online · 10h</div>
+       <div class="row" style="margin-top:8px"><div class="meter grow"><i style="width:0%"></i></div><span class="xs sub">0 / 10 h</span></div></div><span class="pill t">Enrolled</span></div>
+     <div class="row" style="margin-top:12px"><a class="btn sm" href="#assessments">Go to assessment</a><button class="btn line sm">Course details</button></div></div>
+    <div class="card"><h2>Training schedule</h2><div class="timeline"><div><b class="sm">04 Dec 2026</b><div class="sm sub">Magnetic Particle Testing starts · Online</div></div></div></div>
+   </div>
+   <aside class="stack side-right"><div class="card"><h2>Skills you will gain</h2><div class="chips"><span class="pill t">Magnetic particle inspection</span><span class="pill t">Defect detection</span><span class="pill t">NDT safety</span></div><p class="note" style="margin-top:8px">MT appears in 38 open jobs. <span class="sample">SAMPLE</span></p></div></aside>
+  </div>
+ </section>
+
+ <section class="panel" data-group="l" id="catalog">
+  <div class="card"><div class="chips" style="margin-bottom:12px"><span class="chip on">All</span><span class="chip">UT</span><span class="chip">RT</span><span class="chip">PT</span><span class="chip">Saved</span></div>
+   <div class="list">
+    <div class="item"><div class="logo-sq">UT</div><div class="grow"><b>Ultrasonic Testing Level II</b><div class="sub sm">12h · Online · requested in 45 jobs</div></div><button class="btn sm">Enroll</button></div>
+    <div class="item"><div class="logo-sq">RT</div><div class="grow"><b>Radiographic Testing basics</b><div class="sub sm">14h · Online · requested in 32 jobs</div></div><button class="btn sm">Enroll</button></div>
+    <div class="item"><div class="logo-sq">PT</div><div class="grow"><b>Liquid Penetrant Testing</b><div class="sub sm">8h · Online · requested in 29 jobs</div></div><button class="btn sm">Enroll</button></div>
+   </div></div>
+ </section>
+
+ <section class="panel" data-group="l" id="assessments">
+  <div class="card"><div class="tabs" style="margin-bottom:12px"><button class="on">Training assessments 1</button><button>Job assessments 0</button></div>
+   <div class="tblwrap"><table><tr><th>Name</th><th>Type</th><th>Status</th><th>Date</th><th>Score</th><th>Certificate</th><th></th></tr>
+    <tr><td><b>Magnetic Particle Testing</b><div class="xs sub">Attempts: unlimited</div></td><td>Training</td><td><span class="pill y">Not started</span></td><td>17 Aug 2026</td><td>—</td><td>—</td><td><button class="btn sm">Take assessment</button></td></tr></table></div>
+   <div class="callout" style="margin-top:12px">Pass mark is 70%. Passing unlocks the certificate and lets you verify the skill.</div></div>
+ </section>
+
+ <section class="panel" data-group="l" id="certificates">
+  <div class="card"><div class="head"><h2>Certificates <span class="sample">SAMPLE</span></h2><a href="certificates.html">Open full page</a></div>
+   <div class="list" id="lc-list"></div>
+   <p class="note" style="margin-top:10px">Pass the Magnetic Particle Testing assessment to earn your next one. <a class="teal" href="#assessments">Go to assessment</a></p></div>
+ </section>
+
+ <section class="panel" data-group="l" id="investments">
+  <div class="card"><h2>Investments and payments</h2><div class="tblwrap"><table><tr><th>Item</th><th>Type</th><th>Date</th><th>Status</th></tr>
+   <tr><td>Magnetic Particle Testing</td><td>Training enrollment</td><td>—</td><td><span class="pill g">Enrolled</span></td></tr></table></div>
+   <p class="note" style="margin-top:10px">Amounts and invoices come from the existing payments data.</p></div>
+ </section>
+</main>
+<script src="assets/data.js"></script><script src="assets/app.js"></script><script src="assets/nav.js"></script>
+<script>
+(function () {
+  document.getElementById('lc-list').innerHTML = TIQDATA.certificates.map(function (c) {
+    return '<div class="item"><div class="logo-sq">' + c.skill + '</div><div class="grow"><b>' + TIQ.esc(c.title) + '</b><div class="sm sub">' + TIQ.esc(c.issuer) + ' · ' + new Date(c.issued).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) + '</div></div><a class="btn line sm" href="certificates.html#' + c.id + '">View</a></div>';
+  }).join('');
+})();
+</script>
+</body></html>

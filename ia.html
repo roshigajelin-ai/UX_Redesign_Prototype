@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navigation map · TIQ World (design docs)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="docs">
+<main class="doc">
+ <p class="sm"><a class="teal" href="compare.html">← Comparison</a> · <a class="teal" href="rationale.html">Next: Rationale →</a> · <a class="teal" href="index.html">Back to mock</a></p>
+ <h1>Navigation map: before and after</h1>
+ <p class="sub">Five top-level sections replace the dashboard-and-tiles funnel. Every existing feature stays, and is reachable in two clicks or fewer.</p>
+
+ <div class="navmap" style="margin-top:16px">
+  <div class="box"><b>Before (funnel)</b><ul>
+   <li>Dashboard</li>
+   <li class="l2">→ Quick action: Browse jobs → Work Opportunities (Explore / Applications / Active Work / History)</li>
+   <li class="l2">→ Quick action: Training → Catalog / My Learning / Saved</li>
+   <li class="l2">→ Quick action: Assessments</li>
+   <li class="l2">→ Quick action: Certificates</li>
+   <li class="l2">→ Quick action: Investments</li>
+   <li class="l2">→ Skills (Manage)</li></ul></div>
+  <div class="box after"><b class="teal">After (platform)</b><ul>
+   <li>Home (feed)</li><li>Jobs <span class="xs sub">browse + detail</span></li>
+   <li>My Work <span class="xs sub">Applications · Interviews · Contracts · History</span></li>
+   <li>Learn <span class="xs sub">Training · Catalog · Assessments · Certificates · Investments</span></li>
+   <li>Inbox <span class="xs sub">Notifications · Messages · Interviews · Ask TIQ</span></li>
+   <li>Me <span class="xs sub">Profile · Skills · Readiness · Account</span></li></ul></div>
+ </div>
+
+ <h2>Every existing feature, clicks from any page</h2>
+ <div class="tblwrap"><table><tr><th>Feature</th><th>Path in new nav</th><th>Clicks</th></tr>
+  <tr><td>Browse and apply to jobs</td><td>Jobs → job</td><td>2</td></tr>
+  <tr><td>Applications</td><td>My Work → Applications</td><td>2 (1 from the Home shortcut)</td></tr>
+  <tr><td>Active contracts and work reports</td><td>My Work → Contracts</td><td>2</td></tr>
+  <tr><td>Interviews</td><td>My Work → Interviews, or Inbox → Interviews</td><td>2</td></tr>
+  <tr><td>Job history</td><td>My Work → History</td><td>2</td></tr>
+  <tr><td>Training and catalog</td><td>Learn → My training / Catalog</td><td>2</td></tr>
+  <tr><td>Assessments</td><td>Learn → Assessments, or Home reminder</td><td>2 (Home: 1)</td></tr>
+  <tr><td>Certificates</td><td>Learn → Certificates, or Me → Certificates</td><td>2</td></tr>
+  <tr><td>Investments and payments</td><td>Me → Investments, or Learn → Investments</td><td>2</td></tr>
+  <tr><td>Skills and verification</td><td>Me → Skills</td><td>2</td></tr>
+  <tr><td>Profile</td><td>Me → View profile</td><td>2 (Me avatar on mobile: 1)</td></tr>
+  <tr><td>Analytics and insights (new)</td><td>Insights → any tab</td><td>1–2</td></tr>
+  <tr><td>Notifications</td><td>Bell / Inbox</td><td>1</td></tr>
+  <tr><td>Wiki / AI chat</td><td>“Ask TIQ” button on every page</td><td>1</td></tr>
+ </table></div>
+
+ <h2>Mobile behaviour</h2>
+ <ul>
+  <li>Top bar shrinks to logo and notification bell.</li>
+  <li>Bottom tab bar: Home, Jobs, Work, Learn, Me. Inbox is the bell; Ask TIQ is a floating button.</li>
+  <li>Three-column pages collapse to a single column: profile card and shortcuts move below the feed.</li>
+  <li>Jobs list and job detail become two separate screens.</li>
+ </ul>
+ <p><a class="btn" href="mobile.html">See the mobile view</a></p>
+</main>
+<script src="assets/nav.js"></script>
+</body></html>

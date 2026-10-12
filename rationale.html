@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rationale · TIQ World (design docs)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="docs">
+<main class="doc">
+ <p class="sm"><a class="teal" href="ia.html">← Navigation map</a> · <a class="teal" href="compare.html">Comparison</a> · <a class="teal" href="index.html">Back to mock</a></p>
+ <h1>Rationale</h1>
+ <p class="sub">Why the freelancer experience moves from a dashboard funnel to a navigable platform.</p>
+
+ <h2>Problem</h2>
+ <p>Users land on the dashboard, use it, and leave. Features sit behind quick-action tiles, so they are hard to find and there is no reason to browse. It behaves like a form flow, not a platform.</p>
+
+ <h2>What changes</h2>
+ <ul>
+  <li><b>Global nav</b> on every page: Home, Jobs, My Work, Learn, Inbox, Me.</li>
+  <li><b>Home becomes a feed</b>: continue-learning card, matched jobs, skill-gap nudge, reminders, news.</li>
+  <li><b>Related features are grouped</b>: training, assessments, certificates and investments live together in Learn. Applications, interviews and contracts live together in My Work.</li>
+  <li><b>Features are linked to each other</b>: a course says how many jobs need its skill; a job says which assessment it needs.</li>
+  <li><b>Ask TIQ</b> is one click from anywhere.</li>
+ </ul>
+
+ <h2>Reused from existing features</h2>
+ <div class="tblwrap"><table><tr><th>Existing</th><th>Reused as</th></tr>
+  <tr><td>Work Opportunities (Explore, Applications, Active Work, History)</td><td>Jobs page + My Work tabs. Same data and filters.</td></tr>
+  <tr><td>Training catalog, My Learning, Saved</td><td>Learn → My training / Catalog</td></tr>
+  <tr><td>Assessments table</td><td>Learn → Assessments, unchanged columns</td></tr>
+  <tr><td>Certificates, Investments</td><td>Learn tabs and Me menu</td></tr>
+  <tr><td>Skills management</td><td>Profile → Skills</td></tr>
+  <tr><td>Wiki / AI chat, notifications</td><td>Inbox tabs and Ask TIQ button</td></tr>
+ </table></div>
+
+ <h2>New work and backend impact</h2>
+ <div class="tblwrap"><table><tr><th>Item</th><th>Needs</th><th>Effort</th></tr>
+  <tr><td>Global nav, bottom tab bar, routes</td><td>Frontend only</td><td>Low</td></tr>
+  <tr><td>Feed on Home</td><td>One aggregation endpoint (recent jobs, reminders, continue-learning). Content/news cards need a source.</td><td>Medium</td></tr>
+  <tr><td>Match % per job</td><td>Compute from verified skills, certificates, experience, location. The mock numbers are placeholders.</td><td>Medium</td></tr>
+  <tr><td>Skill demand counts (“45 jobs need UT”)</td><td>Aggregate query over open jobs by skill</td><td>Low</td></tr>
+  <tr><td>Course progress</td><td>Hours or modules completed per enrollment, if not already stored</td><td>Low–medium</td></tr>
+  <tr><td>Career readiness score</td><td>Define formula, then compute. Optional for v1.</td><td>Medium</td></tr>
+  <tr><td>Job alerts, follow company, saved jobs</td><td>New tables and notification trigger</td><td>Medium</td></tr>
+  <tr><td>Community post box on Home</td><td>New feature. Can be dropped from v1.</td><td>High</td></tr>
+ </table></div>
+
+ <h2>Suggested v1 scope</h2>
+ <p>Ship the nav, regrouped pages and Home feed using existing data. Add match % and skill counts next. Treat alerts, community and readiness score as later phases.</p>
+
+ <h2>Open questions for review with Raghavan</h2>
+ <ul>
+  <li>Confirm the exact routes and any freelancer features missing from the current-state table.</li>
+  <li>Are brand colours in this mock correct? They are taken from the earlier dashboard mocks, not from the production theme.</li>
+  <li>Is the community post box in scope?</li>
+ </ul>
+</main>
+<script src="assets/nav.js"></script>
+</body></html>

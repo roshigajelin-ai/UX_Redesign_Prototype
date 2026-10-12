@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jobs · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="jobs">
+<main class="wrap">
+ <div class="row between wrapflex" style="margin-bottom:12px">
+  <div><h1>Jobs</h1><div class="sub sm">Browse open opportunities. Match % uses your skills (illustrative formula). <span class="sample">SAMPLE DATA</span></div></div>
+  <div class="row"><a class="btn line sm" href="work.html#applications">My applications</a><button class="btn ghost sm" id="alert">Set job alert</button></div>
+ </div>
+ <div class="cols" style="grid-template-columns:240px minmax(0,1fr) 320px">
+  <aside class="card side-left">
+   <div class="row between"><h2 style="margin:0">Filters</h2><button class="btn line sm" id="reset">Reset</button></div>
+   <label class="sm sub" for="q" style="display:block;margin:12px 0 4px">Search</label>
+   <input id="q" class="field" placeholder="Title or company" autocomplete="off">
+   <div class="sm sub" style="margin:14px 0 4px">Skills</div><div class="chips" id="fs"></div>
+   <div class="sm sub" style="margin:14px 0 4px">Employment type</div><div class="chips" id="ft"></div>
+   <div class="sm sub" style="margin:14px 0 4px">Work mode</div><div class="chips" id="fm"></div>
+   <div class="sm sub" style="margin:14px 0 4px">Location</div><div class="chips" id="fl"></div>
+   <label class="row sm" style="margin-top:14px;gap:8px"><input type="checkbox" id="onlysaved"> Saved jobs only <span class="pill" id="savedn">0</span></label>
+  </aside>
+
+  <section class="card" style="padding:12px">
+   <div class="row between wrapflex" style="padding:2px 4px 10px">
+    <b class="sm" id="count"></b>
+    <label class="sm sub">Sort <select id="sort" class="field" style="width:auto;padding:4px 8px"><option value="match">Best match</option><option value="new">Newest</option></select></label>
+   </div>
+   <div class="list" id="list"></div>
+   <div style="text-align:center;margin-top:12px"><button class="btn line sm" id="more">Show more</button></div>
+  </section>
+
+  <aside class="stack side-right">
+   <div class="card"><div class="head"><h2 style="margin:0">Jobs by skill</h2><span class="xs faint">click to filter</span></div><div id="ch-skill"></div></div>
+   <div class="card"><h2>Work mode</h2><div id="ch-mode"></div></div>
+   <div class="callout">Your skills are unverified. <a class="teal" href="profile.html#skills">Verify them</a> to raise match scores.</div>
+  </aside>
+ </div>
+</main>
+<script src="assets/data.js"></script><script src="assets/app.js"></script><script src="assets/charts.js"></script><script src="assets/jobui.js"></script><script src="assets/nav.js"></script>
+<script>
+(function () {
+  var D = TIQDATA, C = TIQCharts, S = { q: '', skill: [], type: [], mode: [], loc: [], saved: false, sort: 'match', n: 8 };
+  var qp = new URLSearchParams(location.search); if (qp.get('skill')) S.skill = [qp.get('skill')];
+  function chips(id, list, key, label) {
+    var h = document.getElementById(id); h.innerHTML = list.map(function (o) { return '<button class="chip' + (S[key].indexOf(o) >= 0 ? ' on' : '') + '" data-v="' + o + '" aria-pressed="' + (S[key].indexOf(o) >= 0) + '">' + (label ? label(o) : o) + '</button>'; }).join('');
+    h.onclick = function (e) { var b = e.target.closest('[data-v]'); if (!b) return; var i = S[key].indexOf(b.dataset.v); if (i >= 0) S[key].splice(i, 1); else S[key].push(b.dataset.v); S.n = 8; draw(); };
+  }
+  function filt(skip) {
+    var q = S.q.toLowerCase();
+    return D.jobs.filter(function (j) {
+      return (!q || (j.title + ' ' + j.company).toLowerCase().indexOf(q) >= 0) && (skip === 'skill' || !S.skill.length || S.skill.indexOf(j.skill) >= 0) && (!S.type.length || S.type.indexOf(j.type) >= 0) && (skip === 'mode' || !S.mode.length || S.mode.indexOf(j.mode) >= 0) && (!S.loc.length || S.loc.indexOf(j.location) >= 0) && (!S.saved || TIQ.jobs.isSaved(j.id));
+    });
+  }
+  function draw() {
+    chips('fs', Object.keys(D.SKILLS), 'skill'); chips('ft', D.TYPES, 'type'); chips('fm', D.MODES, 'mode'); chips('fl', D.LOCS, 'loc');
+    var r = filt().slice().sort(function (a, b) { return S.sort === 'new' ? a.posted - b.posted : b.match - a.match; });
+    document.getElementById('count').textContent = r.length + ' job' + (r.length === 1 ? '' : 's');
+    document.getElementById('savedn').textContent = TIQ.jobs.saved().length;
+    var l = document.getElementById('list');
+    l.innerHTML = r.length ? r.slice(0, S.n).map(TIQ.jobCard).join('') : '<div class="chart-empty">No jobs match these filters.<br><button class="btn sm" style="margin-top:10px" id="rs2">Reset filters</button></div>';
+    var rs2 = document.getElementById('rs2'); if (rs2) rs2.onclick = reset;
+    document.getElementById('more').style.display = r.length > S.n ? '' : 'none';
+    var sk = Object.keys(D.SKILLS).map(function (k) { return { key: k, label: k, value: filt('skill').filter(function (j) { return j.skill === k; }).length }; });
+    C.bar('#ch-skill', sk, { active: S.skill, color: C.COL.violet, labelW: 40, rowH: 26, onClick: function (d) { var i = S.skill.indexOf(d.key); if (i >= 0) S.skill.splice(i, 1); else S.skill.push(d.key); S.n = 8; draw(); } });
+    var md = D.MODES.map(function (m) { return { key: m, label: m, value: filt('mode').filter(function (j) { return j.mode === m; }).length }; });
+    C.donut('#ch-mode', md, { active: S.mode, center: { big: r.length, small: 'jobs' }, onClick: function (d) { var i = S.mode.indexOf(d.key); if (i >= 0) S.mode.splice(i, 1); else S.mode.push(d.key); S.n = 8; draw(); } });
+  }
+  function reset() { S.q = ''; S.skill = []; S.type = []; S.mode = []; S.loc = []; S.saved = false; S.n = 8; document.getElementById('q').value = ''; document.getElementById('onlysaved').checked = false; draw(); }
+  document.getElementById('reset').onclick = reset;
+  document.getElementById('q').oninput = function (e) { S.q = e.target.value; S.n = 8; draw(); };
+  document.getElementById('sort').onchange = function (e) { S.sort = e.target.value; draw(); };
+  document.getElementById('onlysaved').onchange = function (e) { S.saved = e.target.checked; draw(); };
+  document.getElementById('more').onclick = function () { S.n += 8; draw(); };
+  document.getElementById('alert').onclick = function () {
+    TIQ.modal({ title: 'Set a job alert', body: '<p class="sub" style="margin-bottom:10px">Get notified when new jobs match the filters you have selected.</p><label class="sm sub" for="fr">Frequency</label><select id="fr" class="field"><option>Daily</option><option>Weekly</option></select><div class="callout" style="margin-top:12px"><b>Simulated.</b> No alert is created.</div>', actions: [{ label: 'Create alert', onClick: function () { TIQ.toast('Job alert created'); } }] });
+  };
+  TIQ.bindJobs(document.getElementById('list'), draw);
+  draw();
+})();
+</script>
+</body></html>

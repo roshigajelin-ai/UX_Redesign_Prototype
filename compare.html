@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparison · TIQ World (design docs)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="docs">
+<main class="doc">
+ <p class="sm"><a class="teal" href="ia.html">Next: Navigation map →</a> · <a class="teal" href="rationale.html">Rationale</a> · <a class="teal" href="index.html">Back to mock</a></p>
+ <h1>Comparison: current layout vs reference platforms</h1>
+ <p class="sub">Design-only study for the freelancer experience. Dummy data. Written 11 Oct 2026.</p>
+
+ <div class="card"><b>Evidence note.</b> <span class="sub sm">The consumer-app repo (src/features/freelancer, src/app/App.tsx) was not available to the author of this page, so the current-state section is based on the live dashboard screens (Dashboard, Work Opportunities, Training, Assessments). Re-check route names against App.tsx before sign-off. The three NDT/energy sites were read on 11 Oct 2026. The general platforms are summarised from general knowledge and should be confirmed with screenshots.</span></div>
+
+ <h2>1. Current freelancer experience: pages and pain points</h2>
+ <div class="tblwrap"><table><tr><th>Feature</th><th>Where it lives today</th><th>Pain point</th></tr>
+  <tr><td>Dashboard</td><td>Landing page: overview counts, quick actions, upcoming training, skills, activity snapshot</td><td>Only entry point. Most counters read 0, so it feels empty and the user has no reason to come back.</td></tr>
+  <tr><td>Jobs</td><td>Work Opportunities: Explore, Applications, Active Work, History</td><td>Empty state says “No jobs found”. Filters are shown, but no match score until skills are verified.</td></tr>
+  <tr><td>Training</td><td>Training &amp; Upskilling: Catalog, My Learning, Saved</td><td>One course shown as a flat card. No progress, no link to jobs.</td></tr>
+  <tr><td>Assessments</td><td>Separate Assessments page</td><td>Disconnected from the course it belongs to. “Action required” has no context.</td></tr>
+  <tr><td>Certificates, Investments</td><td>Quick-action tiles on the dashboard</td><td>Reachable only from the dashboard tiles.</td></tr>
+  <tr><td>Contracts, interviews</td><td>Inside Work Opportunities → Active Work</td><td>Interviews have no obvious home. Not discoverable.</td></tr>
+  <tr><td>Wiki / AI chat, notifications</td><td>Not visible on the screens reviewed</td><td>Confirm location in the repo. If buried, they are the least discoverable features.</td></tr>
+  <tr><td>Navigation overall</td><td>Dashboard → quick actions → section</td><td>Funnel pattern: you go in through the dashboard and back out. No persistent global nav, no feed, no reason to browse.</td></tr>
+ </table></div>
+
+ <h2>2. NDT and energy competitors (checked 11 Oct 2026)</h2>
+ <div class="tblwrap"><table><tr><th></th><th>Top nav</th><th>Home layout</th><th>Jobs</th><th>Training</th><th>What brings users back</th></tr>
+  <tr><td><b>onestopndt.com</b></td><td>News, Articles, Interviews, Webinars, NDT Talks, Events, Directory, NDT Trends</td><td>Magazine-style: news, trends issue, interviews, webinars, directory</td><td>Link only, no listings seen</td><td>Webinars, talks, a free training article</td><td>Newsletter (45k+ subscribers), weekly content, forums, contributor programme</td></tr>
+  <tr><td><b>ndtworldwide.com</b></td><td>Home, About, Courses, Services, Course Schedule, Gallery, Contact</td><td>Marketing page: hero, stats, app promo, course cards, testimonials</td><td>None</td><td>ASNT Level III refresher courses, schedules, mobile app</td><td>Course schedule, app, WhatsApp chat. No member area.</td></tr>
+  <tr><td><b>energyjobsearch.com</b></td><td>Home, For you, Search, Profile, Jobs, Companies, Career guide; bottom bar on mobile</td><td>Job list with count, sort, filters, alert button</td><td>Strong: cards with company, location, type, seniority, deadline badge</td><td>None (career guide only)</td><td>Job alerts, follow company, resume and profile</td></tr>
+ </table></div>
+ <div class="card"><b>Takeaway.</b> <span class="sub">Each competitor does one thing: content, training or jobs. None combines jobs and training around one profile. TIQ World can own the link between the two: “this course unlocks N jobs”.</span></div>
+
+ <h2>3. General platforms</h2>
+ <div class="tblwrap"><table><tr><th></th><th>Top nav</th><th>Home / feed</th><th>Profile</th><th>Keeps users returning</th></tr>
+  <tr><td><b>LinkedIn</b></td><td>Home, Network, Jobs, Messaging, Notifications, Me</td><td>3 columns: mini-profile, feed, suggestions</td><td>Photo, headline, About, Experience, Skills, Certifications</td><td>Feed, notifications, messages, job alerts, profile views</td></tr>
+  <tr><td><b>Upwork</b></td><td>Find work, Deliver work, Manage finances, Messages, Notifications</td><td>Job feed tabs (Best match, Saved), profile completion, proposals summary</td><td>Title, rate, portfolio, skills, work history</td><td>Matched job feed, invites, contract and payment status</td></tr>
+  <tr><td><b>Fiverr</b></td><td>Search, Orders, Messages, Lists, Notifications</td><td>Category-led browsing, recommendations</td><td>Gigs, reviews, levels</td><td>Order tracking, messages, level progress</td></tr>
+  <tr><td><b>Naukri / Wellfound</b></td><td>Jobs, Companies, Services; Wellfound: Discover, Applications, Messages</td><td>Recommended jobs, profile strength, recruiter actions</td><td>Resume, skills, profile strength meter</td><td>Daily recommendations, recruiter views, application status</td></tr>
+  <tr><td><b>Coursera / Credly</b></td><td>Coursera: Explore, My Learning, Career. Credly: Badges, Profile</td><td>“Continue learning” row, recommendations</td><td>Credly: verified badges with share links</td><td>Progress bars, streaks, certificates, shareable credentials</td></tr>
+ </table></div>
+
+ <h2>4. Patterns we are borrowing</h2>
+ <ul>
+  <li><b>Persistent global nav</b> with 5 sections (LinkedIn, Upwork). Replaces dashboard-as-hub.</li>
+  <li><b>Home feed</b> with a “continue where you left off” card (Coursera) and matched jobs (Naukri, Upwork).</li>
+  <li><b>Profile strength meter</b> that points to the next action (Naukri, LinkedIn).</li>
+  <li><b>Job alerts and follow</b> (energyjobsearch) as a return trigger.</li>
+  <li><b>Verified credentials</b> on the profile (Credly).</li>
+  <li><b>Bottom tab bar on mobile</b> (energyjobsearch, LinkedIn).</li>
+ </ul>
+ <p class="note">Sample numbers in the mock (match %, “45 jobs”) are placeholders and must come from real job data when built.</p>
+</main>
+<script src="assets/nav.js"></script>
+</body></html>

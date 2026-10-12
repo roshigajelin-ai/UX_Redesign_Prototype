@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Work · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="work">
+<main class="wrap">
+ <h1>My Work</h1><div class="sub sm" style="margin-bottom:14px">Everything after you apply: applications, interviews, contracts and history.</div>
+ <div class="kpis" style="margin-bottom:16px" id="wk"></div>
+ <div class="tabs" data-group="w"><button data-t="applications">Applications</button><button data-t="interviews">Interviews</button><button data-t="contracts">Contracts</button><button data-t="history">History</button></div>
+
+ <section class="panel" data-group="w" id="applications">
+  <div class="card"><h2>Applications</h2>
+   <div class="chips" style="margin-bottom:12px"><span class="chip on">All</span><span class="chip">Under review</span><span class="chip">Shortlisted</span><span class="chip">Assessment needed</span></div>
+   <div class="callout">No applications yet. Jobs you apply to appear here with their stage, required assessment and next step.
+    <div style="margin-top:8px"><a class="btn sm" href="jobs.html">Browse jobs</a></div></div>
+   <h3 style="margin:18px 0 8px">What a row looks like once you apply <span class="sample">SAMPLE</span></h3>
+   <div class="tblwrap"><table><tr><th>Role</th><th>Stage</th><th>Next step</th><th></th></tr>
+    <tr><td><b>Acoustic Emission Technician</b><div class="xs sub">Gulf Pipeline Services</div></td><td><span class="pill y">Assessment needed</span></td><td>Take AE job assessment</td><td><a class="btn sm" href="learn.html#assessments">Start</a></td></tr>
+    <tr><td><b>AI Inspection Analyst</b><div class="xs sub">Fabrik Industrial</div></td><td><span class="pill t">Shortlisted</span></td><td>Waiting for interview slot</td><td><a class="btn line sm" href="#interviews">View</a></td></tr></table></div>
+  </div>
+ </section>
+
+ <section class="panel" data-group="w" id="interviews">
+  <div class="card"><div class="head"><h2>Interviews <span class="sample">SAMPLE</span></h2></div><div class="list" id="iv-list"></div>
+   <p class="note" style="margin-top:10px">Invites from employers also appear as notifications in <a class="teal" href="inbox.html">Inbox</a>. Accept and Reschedule are simulated.</p></div>
+ </section>
+
+ <section class="panel" data-group="w" id="contracts">
+  <div class="card"><div class="head"><h2>Active contracts <span class="sample">SAMPLE</span></h2></div><div class="list" id="ct-list"></div></div>
+ </section>
+
+ <section class="panel" data-group="w" id="history">
+  <div class="card"><h2>History</h2><div class="callout">Completed contracts and closed applications will be listed here.</div></div>
+ </section>
+</main>
+<script src="assets/data.js"></script><script src="assets/app.js"></script><script src="assets/nav.js"></script>
+<script>
+(function () {
+  var D = TIQDATA, E = TIQ.esc;
+  function fd(s) { return new Date(s + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); }
+  var ap = TIQ.jobs.applied().length;
+  var k = [['Applications', ap, 'in progress'], ['Interviews', D.interviews.length, 'scheduled'], ['Contracts', D.contracts.length, 'live'], ['History', 0, 'completed or closed']];
+  document.getElementById('wk').innerHTML = k.map(function (x) { return '<div class="kpi"><span class="sub xs">' + x[0] + '</span><b>' + x[1] + '</b><span class="xs faint">' + x[2] + '</span></div>'; }).join('');
+  document.getElementById('iv-list').innerHTML = D.interviews.map(function (i) {
+    return '<div class="item"><div class="logo-sq">' + i.initials + '</div><div class="grow"><b>' + E(i.company) + ' · ' + E(i.role) + '</b><div class="sm sub">' + i.mode + ' · ' + fd(i.date) + ', ' + i.time + ' IST</div></div>' +
+      '<button class="btn sm" data-act="Interview accepted">Accept</button><button class="btn line sm" data-act="Reschedule request sent">Reschedule</button></div>';
+  }).join('');
+  document.getElementById('ct-list').innerHTML = D.contracts.map(function (c) {
+    return '<div><div class="row between"><b>' + E(c.title) + ' · ' + E(c.company) + '</b><span class="pill g">' + c.status + '</span></div>' +
+      '<div class="meter" style="margin:8px 0"><i style="width:' + c.progress + '%"></i></div>' +
+      '<div class="row between sm sub wrapflex"><span>' + c.progress + '% complete · ' + c.reports[0] + ' of ' + c.reports[1] + ' work reports submitted</span><span>Deadline ' + fd(c.deadline) + '</span></div>' +
+      '<div class="row" style="margin-top:10px"><button class="btn sm" data-act="Work report submitted">Submit work report</button><button class="btn line sm" data-act="Contract opened">View contract</button></div></div>';
+  }).join('');
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-act]'); if (b) TIQ.toast(b.getAttribute('data-act')); });
+})();
+</script>
+</body></html>

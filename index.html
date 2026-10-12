@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0f14">
+<title>Home · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/home.css"></head>
+<body data-page="home">
+<main class="wrap">
+ <div class="hm">
+
+  <!-- left sidebar (desktop) -->
+  <aside class="hm-side" aria-label="Workspace">
+   <div class="card">
+    <div class="hero"></div>
+    <div class="ini" id="sb-ini" style="width:60px;height:60px;font-size:20px;margin-top:-30px;border:3px solid var(--panel)">PS</div>
+    <h2 style="margin:8px 0 0"><a href="profile.html" id="sb-name">Priya Sample</a></h2>
+    <div class="sub sm" id="sb-role">NDT Technician · Chennai, India</div>
+    <hr style="border:0;border-top:1px solid var(--line);margin:12px 0">
+    <div class="row between sm"><span class="sub">Profile strength</span><b class="teal" id="sb-pct">72%</b></div>
+    <div class="meter" style="margin:6px 0 10px"><i id="sb-bar" style="width:72%"></i></div>
+    <a class="sm teal" href="profile.html#skills" id="sb-next">Verify 2 skills to reach 90% →</a>
+   </div>
+   <nav class="card hm-nav" aria-label="Shortcuts" id="sb-nav"></nav>
+  </aside>
+
+  <div class="hm-main">
+
+   <!-- welcome -->
+   <section class="hm-welcome" aria-labelledby="hi">
+    <div class="ini" id="w-ini" aria-hidden="true">PS</div>
+    <div class="txt">
+     <h1 id="hi">Good morning, Priya 👋</h1>
+     <p class="sub" style="margin-top:2px">Your workspace at a glance. Let’s make today productive.</p>
+     <div class="btns"><a class="btn lg" href="jobs.html">Explore Jobs</a><a class="btn lg line" href="learn.html#training">Continue Learning</a></div>
+    </div>
+    <div class="hm-pc"><div class="ring" id="w-ring" style="--p:72" role="img" aria-label="Profile 72% complete"><span id="w-pct">72%</span></div>
+     <div class="sm"><b>Profile completion</b><div><a class="teal" href="profile.html#skills" id="w-next">Verify 2 skills</a></div></div></div>
+   </section>
+
+   <!-- work analytics (charts on top, linked by click-to-filter) -->
+   <section class="card wa" id="wa" aria-labelledby="wa-h">
+    <div class="wa-top">
+     <div><h2 id="wa-h">Work analytics <span class="sample">SAMPLE DATA</span></h2>
+      <div class="wa-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span id="wa-range">–</span></div></div>
+     <div class="wa-seg" id="wa-seg" role="group" aria-label="Date range"><button data-r="7D">7D</button><button data-r="30D">30D</button><button data-r="6M" class="on">6M</button><button data-r="1Y">1Y</button></div>
+    </div>
+    <div class="wa-filters" id="wa-chips" aria-live="polite"></div>
+    <div class="wa-kpis" id="wa-kpis"></div>
+    <div class="wa-grid">
+     <div class="wa-p w7"><h3>Applications over time</h3><div class="s" id="wa-sub1"></div><div id="wa-line"></div></div>
+     <div class="wa-p w5"><h3>Work mode distribution</h3><div class="s">Onsite · Hybrid · Remote</div><div id="wa-donut"></div></div>
+     <div class="wa-p w7"><h3>Top skills in demand</h3><div class="s">Across open opportunities</div><div id="wa-skills"></div></div>
+     <div class="wa-p w5"><h3>Opportunities by employment type</h3><div class="s">Open roles</div><div id="wa-types"></div></div>
+    </div>
+    <p class="wa-note">Invented sample data so the charts have something to show. For the full set of charts and drill-downs open <a class="teal" href="insights.html">Insights</a>. Your real counts are in the cards below.</p>
+   </section>
+
+   <!-- 7 summary cards -->
+   <section aria-label="Workspace summary">
+    <ul class="hm-cards" id="cards"></ul>
+   </section>
+
+   <!-- activity overview + charts -->
+   <section class="hm-two" aria-label="Activity and progress">
+    <article class="card hm-sec">
+     <div class="hm-h"><h2>Activity overview</h2><a href="work.html">My Work →</a></div>
+     <div class="hm-ov" id="ov"></div>
+    </article>
+    <article class="card hm-sec">
+     <div class="hm-h"><h2>Career readiness</h2><a href="profile.html#readiness">See breakdown →</a></div>
+     <div id="c-gauge" style="text-align:center"></div>
+     <div class="hm-h" style="margin:14px 0 6px"><h2 style="font-size:14px">Learning hours</h2><span class="sample">SAMPLE</span></div>
+     <div id="c-hours"></div>
+    </article>
+   </section>
+
+   <!-- schedule + continue learning -->
+   <section class="hm-two">
+    <article class="card hm-sec" aria-labelledby="sch">
+     <div class="hm-h"><h2 id="sch">Upcoming schedule</h2><a href="work.html#interviews">View interviews →</a></div>
+     <ul class="hm-tl" id="sched"></ul>
+    </article>
+    <article class="card hm-sec" aria-labelledby="cl">
+     <div class="hm-h"><h2 id="cl">Continue learning</h2><a href="learn.html#training">My training →</a></div>
+     <div class="hm-learn" id="learn"></div>
+    </article>
+   </section>
+
+   <!-- recommended jobs -->
+   <section class="card hm-sec hm-jobs" aria-labelledby="rj">
+    <div class="hm-h"><h2 id="rj">Recommended opportunities</h2><a href="jobs.html">Browse All Jobs →</a></div>
+    <div class="hm-tabs" role="group" aria-label="Filter recommendations" id="jtabs">
+     <button class="chip" data-f="best" aria-pressed="true">Best match</button>
+     <button class="chip" data-f="skills" aria-pressed="false">My skills</button>
+     <button class="chip" data-f="remote" aria-pressed="false">Remote</button>
+     <button class="chip" data-f="saved" aria-pressed="false">Saved <span id="jt-sv"></span></button>
+    </div>
+    <div id="picks"></div>
+    <div style="margin-top:10px"><a class="btn" href="jobs.html">Browse All Jobs</a></div>
+   </section>
+
+   <!-- recent activity + quick actions -->
+   <section class="hm-two">
+    <article class="card hm-sec" aria-labelledby="ra">
+     <div class="hm-h"><h2 id="ra">Recent activity</h2><a href="inbox.html">Notifications →</a></div>
+     <ul class="hm-feed" id="feed"></ul>
+    </article>
+    <article class="card hm-sec" aria-labelledby="qa">
+     <div class="hm-h"><h2 id="qa">Quick actions</h2></div>
+     <div class="hm-qa" id="qacts"></div>
+    </article>
+   </section>
+
+   <!-- kept from the previous Home: skills in demand, skill gap, news -->
+   <section class="hm-two">
+    <article class="card"><div class="hm-h"><h2>Skills in demand</h2><a href="insights.html">More insights →</a></div><div id="c-demand"></div><div class="note">Click a bar to see those jobs. Counts come from the dummy job list.</div></article>
+    <div class="stack">
+     <article class="card">
+      <div class="row sm sub" style="margin-bottom:8px"><span class="pill t">Skills</span> Close the gap</div>
+      <b>Ultrasonic Testing is requested in <span id="ut-n">0</span> open jobs.</b>
+      <p class="sub sm" style="margin:4px 0 10px">You have Acoustic Emission and AI in Manufacturing. Adding UT would open more roles.</p>
+      <div class="row wrapflex"><button class="btn sm" data-open="m-ut" data-title="Ultrasonic Testing Level II">View course</button><a class="btn line sm" href="profile.html#skills">Verify my skills</a></div>
+     </article>
+     <article class="card">
+      <div class="row sm sub" style="margin-bottom:8px"><span class="pill">Industry</span> NDT news · 1 day ago</div>
+      <b>New guidance on phased-array scan plans for weld inspection</b>
+      <p class="sub sm" style="margin:4px 0 8px">4 min read · TIQ editorial team <span class="sample">SAMPLE</span></p>
+      <button class="btn line sm" data-open="m-news" data-title="Phased-array scan plans">Read summary</button>
+     </article>
+    </div>
+   </section>
+
+   <p class="note">Design mock with dummy data. Counts for applications and saved jobs are live from this browser; everything else is sample data from assets/data.js.</p>
+  </div>
+ </div>
+</main>
+
+<template id="m-ut"><p class="sub">12 hours · Online · Level II · starts 15 Dec 2026.</p><div class="callout" style="margin:12px 0">Requested in several open jobs. Skills gained: ultrasonic flaw detection, calibration, reporting.</div><a class="btn" href="learn.html#catalog">Open catalog</a></template>
+<template id="m-news"><p class="sub">Sample summary: how to plan phased-array scans for weld inspection, coverage maps and acceptance criteria. This is placeholder content for the design mock.</p></template>
+
+<script src="assets/data.js"></script><script src="assets/insights-data.js"></script><script src="assets/app.js"></script><script src="assets/charts.js"></script><script src="assets/jobui.js"></script><script src="assets/nav.js"></script><script src="assets/home-charts.js"></script>
+<script>
+(function () {
+  var D = TIQDATA, C = TIQCharts, E = TIQ.esc, P = D.profile;
+  var $ = function (id) { return document.getElementById(id); };
+  var I = {
+    app: '<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/>',
+    contract: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+    interview: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>',
+    train: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/>',
+    assess: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    cert: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/>',
+    saved: '<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/>',
+    jobs: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>'
+  };
+  function svg(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + I[k] + '</svg>'; }
+  function fd(s, o) { return new Date(s + 'T00:00:00').toLocaleDateString('en-GB', o || { day: '2-digit', month: 'short', year: 'numeric' }); }
+  function plural(n, a, b) { return n === 1 ? a : b; }
+
+  // greeting + profile (from data.js)
+  var h = new Date().getHours();
+  $('hi').textContent = (h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening') + ', ' + P.name.split(' ')[0] + ' 👋';
+  ['sb-ini', 'w-ini'].forEach(function (i) { $(i).textContent = P.initials; });
+  $('sb-name').textContent = P.name; $('sb-role').textContent = P.role + ' · ' + P.place;
+  $('sb-pct').textContent = $('w-pct').textContent = P.strength + '%'; $('sb-bar').style.width = P.strength + '%';
+  $('w-ring').style.setProperty('--p', P.strength); $('w-ring').setAttribute('aria-label', 'Profile ' + P.strength + '% complete');
+  $('sb-next').textContent = P.nextStep + ' →'; $('w-next').textContent = P.nextStep;
+
+  $('ut-n').textContent = D.jobs.filter(function (j) { return j.skill === 'UT'; }).length;
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  function counts() {
+    var due = D.assessments.filter(function (a) { return a.status !== 'Passed'; }).length;
+    return [
+      { k: 'app', t: 'Applications', n: TIQ.jobs.applied().length, u: 'active', d: TIQ.jobs.applied().length ? 'Applications you submitted from Jobs.' : 'Apply to a job to start tracking it here.', href: 'work.html#applications', ac: 'violet' },
+      { k: 'contract', t: 'Contracts', n: D.contracts.length, u: 'live', d: 'Ongoing work with reports and deadlines.', href: 'work.html#contracts', ac: 'green' },
+      { k: 'interview', t: 'Interviews', n: D.interviews.length, u: 'upcoming', d: 'Next: ' + (D.interviews[0] ? fd(D.interviews[0].date, { day: '2-digit', month: 'short' }) + ' · ' + D.interviews[0].company : 'none scheduled'), href: 'work.html#interviews', ac: 'amber' },
+      { k: 'train', t: 'My Training', n: D.training.length, u: 'enrolled', d: D.training[0] ? D.training[0].title + ' starts ' + fd(D.training[0].start, { day: '2-digit', month: 'short' }) : 'Browse the catalog', href: 'learn.html#training', ac: 'teal' },
+      { k: 'assess', t: 'Assessments', n: due, u: 'due', d: due ? 'Pass mark ' + D.assessments[0].passMark + '%. Unlimited attempts.' : 'Nothing pending.', href: 'learn.html#assessments', ac: 'red' },
+      { k: 'cert', t: 'Certificates', n: D.certificates.length, u: 'earned', d: 'Latest: ' + D.certificates[0].title, href: 'certificates.html', ac: 'blue' },
+      { k: 'saved', t: 'Saved Jobs', n: TIQ.jobs.saved().length, u: 'saved', d: TIQ.jobs.saved().length ? 'Jobs you starred, ready to apply.' : 'Star a job to keep it here.', href: 'jobs.html', ac: 'amber' }
+    ];
+  }
+  var TXT = { violet: 'violet', green: 'green', amber: 'amber', teal: 'teal', red: 'red', blue: 'blue' }, FILL = { violet: 'c-violet', green: 'c-green', amber: 'c-amber', teal: 'c-teal', red: 'c-red', blue: 'c-blue' };
+
+  function renderCards() {
+    var cs = counts();
+    $('cards').innerHTML = cs.map(function (c) {
+      return '<li><a class="hm-card" href="' + c.href + '" style="--ac:var(--' + FILL[c.ac] + ');--at:var(--' + TXT[c.ac] + ')" aria-label="' + c.t + ': ' + c.n + ' ' + c.u + '. View all">' +
+        '<span class="top"><span class="ic">' + svg(c.k) + '</span><span class="t">' + c.t + '</span></span>' +
+        '<span class="n">' + c.n + '<small>' + c.u + '</small></span><span class="d">' + E(c.d) + '</span><span class="go">View all <span aria-hidden="true">→</span></span></a></li>';
+    }).join('');
+    $('sb-nav').innerHTML = '<div class="h">Workspace</div>' + cs.map(function (c) {
+      return '<a href="' + c.href + '">' + svg(c.k) + c.t + '<span class="pill">' + c.n + '</span></a>';
+    }).join('');
+    return cs;
+  }
+
+  function renderOverview() {
+    var ap = TIQ.jobs.applied().length, tr = D.training[0], as = D.assessments, passed = as.filter(function (a) { return a.status === 'Passed'; }).length;
+    var rows = '';
+    rows += '<div class="r"><div class="row between"><span>Active applications</span><b>' + ap + '</b></div><div class="meter"><i class="v" style="width:' + Math.min(100, ap * 20) + '%"></i></div></div>';
+    D.contracts.forEach(function (c) { rows += '<div class="r"><div class="row between"><span>' + E(c.title) + '</span><b>' + c.progress + '%</b></div><div class="meter"><i class="g" style="width:' + c.progress + '%"></i></div></div>'; });
+    var nx = D.interviews.filter(function (i) { return new Date(i.date) >= today; })[0];
+    rows += '<div class="r"><div class="row between"><span>Upcoming interviews</span><b>' + D.interviews.length + (nx ? ' · next ' + fd(nx.date, { day: '2-digit', month: 'short' }) : '') + '</b></div><div class="meter"><i class="a" style="width:' + Math.min(100, D.interviews.length * 25) + '%"></i></div></div>';
+    if (tr) rows += '<div class="r"><div class="row between"><span>Training progress</span><b>' + tr.done + ' / ' + tr.hours + ' h</b></div><div class="meter"><i style="width:' + Math.round(tr.done / tr.hours * 100) + '%"></i></div></div>';
+    rows += '<div class="r"><div class="row between"><span>Assessments completed</span><b>' + passed + ' / ' + as.length + '</b></div><div class="meter"><i class="b" style="width:' + (as.length ? Math.round(passed / as.length * 100) : 0) + '%"></i></div></div>';
+    rows += '<div class="r"><div class="row between"><span>Certificates earned</span><b>' + D.certificates.length + '</b></div><div class="hm-dots" aria-hidden="true">' + D.certificates.map(function () { return '<i></i>'; }).join('') + '<i class="off"></i></div></div>';
+    $('ov').innerHTML = rows;
+  }
+
+  function renderSchedule() {
+    var ev = [];
+    D.interviews.forEach(function (i) { ev.push({ date: i.date, t: 'Interview · ' + i.company, s: i.role + ' · ' + i.mode + ' · ' + i.time, href: 'work.html#interviews' }); });
+    D.contracts.forEach(function (c) { ev.push({ date: c.deadline, t: 'Contract deadline · ' + c.title, s: c.company + ' · ' + c.progress + '% complete', href: 'work.html#contracts' }); });
+    D.training.forEach(function (t) { ev.push({ date: t.start, t: t.title + ' starts', s: t.provider + ' · ' + t.mode + ' · ' + t.hours + ' h', href: 'learn.html#training' }); });
+    ev = ev.filter(function (e) { return new Date(e.date + 'T00:00:00') >= today; }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    var out = ev.slice(0, 5).map(function (e) {
+      return '<li><div class="hm-date"><b>' + fd(e.date, { day: '2-digit' }) + '</b><span>' + fd(e.date, { month: 'short' }) + '</span></div><a class="grow" href="' + e.href + '"><b class="sm">' + E(e.t) + '</b><div class="xs sub">' + E(e.s) + '</div></a></li>';
+    }).join('');
+    var undated = D.assessments.filter(function (a) { return !a.due && a.status !== 'Passed'; });
+    undated.forEach(function (a) { out += '<li><div class="hm-date" aria-hidden="true"><b>–</b><span>none</span></div><a class="grow" href="learn.html#assessments"><b class="sm">Assessment: ' + E(a.title) + '</b><div class="xs sub">No due date set. Take it when you finish the course.</div></a></li>'; });
+    $('sched').innerHTML = out || '<li class="hm-empty" style="display:block;width:100%">Nothing scheduled. Interviews, contract deadlines and training start dates appear here.</li>';
+  }
+
+  function renderLearn() {
+    var t = D.training[0], a = D.assessments[0], c = D.certificates[0], s = '';
+    if (t) { var pct = Math.round(t.done / t.hours * 100);
+      s += '<div class="hm-box"><div class="xs teal" style="letter-spacing:.6px">ENROLLED</div><b>' + E(t.title) + '</b><div class="xs sub">' + t.provider + ' · starts ' + fd(t.start) + ' · ' + t.hours + ' h</div>' +
+        '<div class="row" style="margin-top:8px"><div class="meter grow"><i style="width:' + pct + '%"></i></div><span class="xs sub">' + (t.done ? t.done + ' / ' + t.hours + ' h' : 'Not started') + '</span></div></div>'; }
+    if (a) s += '<div class="hm-box"><div class="row between wrapflex"><div><div class="xs amber" style="letter-spacing:.6px">ASSESSMENT · ' + a.status.toUpperCase() + '</div><b class="sm">' + E(a.title) + '</b></div><a class="btn sm line" href="learn.html#assessments">Prepare</a></div></div>';
+    if (c) s += '<div class="hm-box"><div class="xs sub">Latest certificate</div><b class="sm">' + E(c.title) + '</b> <span class="xs sub">· ' + fd(c.issued, { month: 'short', year: 'numeric' }) + '</span></div>';
+    s += '<div class="row wrapflex"><a class="btn" href="learn.html#training">Continue Learning</a><a class="btn line" href="certificates.html">View Certificates</a></div>';
+    $('learn').innerHTML = s;
+  }
+
+  var JF = 'best';
+  function renderJobs() {
+    var js = D.jobs.slice();
+    if (JF === 'skills') js = js.filter(function (j) { return D.USER_SKILLS.indexOf(j.skill) >= 0; });
+    if (JF === 'remote') js = js.filter(function (j) { return j.mode === 'Remote'; });
+    if (JF === 'saved') js = js.filter(function (j) { return TIQ.jobs.isSaved(j.id); });
+    js.sort(function (a, b) { return b.match - a.match; });
+    $('jt-sv').textContent = TIQ.jobs.saved().length ? '(' + TIQ.jobs.saved().length + ')' : '';
+    $('picks').innerHTML = js.length ? js.slice(0, 3).map(TIQ.jobCard).join('') : '<div class="hm-empty">' + (JF === 'saved' ? 'No saved jobs yet. Tap the star on any job to keep it here.' : 'No jobs match this filter.') + '</div>';
+    document.querySelectorAll('#jtabs [data-f]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.f === JF ? 'true' : 'false'); });
+  }
+  $('jtabs').addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) { JF = b.dataset.f; renderJobs(); } });
+
+  function renderFeed() {
+    var f = [];
+    TIQ.jobs.applied().slice(-2).reverse().forEach(function (id) { var j = TIQ.jobs.get(id); if (j) f.push({ ic: 'app', ac: 'violet', t: 'You applied to ' + j.title, s: j.company + ' · this browser', href: 'work.html#applications' }); });
+    TIQ.jobs.saved().slice(-2).reverse().forEach(function (id) { var j = TIQ.jobs.get(id); if (j) f.push({ ic: 'saved', ac: 'amber', t: 'Saved ' + j.title, s: j.company + ' · this browser', href: 'jobs.html' }); });
+    D.contracts.forEach(function (c) { f.push({ ic: 'contract', ac: 'green', t: c.title + ': ' + c.reports[0] + ' of ' + c.reports[1] + ' work reports submitted', s: c.company, href: 'work.html#contracts' }); });
+    D.interviews.forEach(function (i) { f.push({ ic: 'interview', ac: 'amber', t: 'Interview scheduled with ' + i.company, s: fd(i.date) + ' · ' + i.time, href: 'work.html#interviews' }); });
+    D.training.forEach(function (t) { f.push({ ic: 'train', ac: 'teal', t: 'Enrolled in ' + t.title, s: 'Starts ' + fd(t.start), href: 'learn.html#training' }); });
+    D.certificates.forEach(function (c) { f.push({ ic: 'cert', ac: 'blue', t: 'Earned ' + c.title, s: fd(c.issued), href: 'certificates.html#' + c.id }); });
+    $('feed').innerHTML = f.slice(0, 7).map(function (x) {
+      return '<li style="--ac:var(--' + FILL[x.ac] + ');--at:var(--' + TXT[x.ac] + ')"><span class="dotx">' + svg(x.ic) + '</span><a class="grow" href="' + x.href + '"><div class="sm">' + E(x.t) + '</div><div class="xs faint">' + E(x.s) + '</div></a></li>';
+    }).join('');
+  }
+
+  function renderActions() {
+    var q = [['jobs', 'Browse Jobs', 'jobs.html', 'violet'], ['app', 'View Applications', 'work.html#applications', 'violet'], ['contract', 'Open Contracts', 'work.html#contracts', 'green'],
+      ['assess', 'Prepare for Assessments', 'learn.html#assessments', 'red'], ['train', 'Continue Training', 'learn.html#training', 'teal'], ['cert', 'View Certificates', 'certificates.html', 'blue']];
+    $('qacts').innerHTML = q.map(function (x) { return '<a class="hm-act" href="' + x[2] + '" style="--ac:var(--' + FILL[x[3]] + ');--at:var(--' + TXT[x[3]] + ')">' + svg(x[0]) + x[1] + '</a>'; }).join('');
+  }
+
+  function charts() {
+    C.gauge('#c-gauge', D.readiness.total, { label: 'Career readiness', sub: 'sample score' });
+    C.line('#c-hours', D.hours.labels, D.hours.values, { unit: ' h', W: 360, H: 170 });
+    var cnt = Object.keys(D.SKILLS).map(function (k) { return { key: k, label: k, value: D.jobs.filter(function (j) { return j.skill === k; }).length }; });
+    C.bar('#c-demand', cnt, { color: C.COL.violet, labelW: 40, rowH: 27, onClick: function (d) { TIQ.jobList(d.key + ' jobs (' + d.value + ')', D.jobs.filter(function (j) { return j.skill === d.key; }), refresh); } });
+  }
+
+  function refresh() { renderCards(); renderOverview(); renderJobs(); renderFeed(); }
+  TIQ.bindJobs($('picks'), refresh);
+  renderCards(); renderOverview(); renderSchedule(); renderLearn(); renderJobs(); renderFeed(); renderActions(); charts();
+  window.addEventListener('pageshow', function (e) { if (e.persisted) refresh(); });
+})();
+</script>
+</body></html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Certificates · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="learn">
+<main class="wrap">
+ <p class="sm"><a class="teal" href="learn.html#certificates">← Learn</a></p>
+ <h1>Certificates <span class="sample">SAMPLE</span></h1>
+ <div class="sub sm" style="margin-bottom:14px">Credentials you have earned. All names, dates and IDs are dummy data for the design mock.</div>
+ <div class="grid3" id="cl"></div>
+ <div class="callout" style="margin-top:16px">Next certificate: pass the Magnetic Particle Testing assessment (pass mark 70%). <a class="teal" href="learn.html#assessments">Prepare for assessment →</a></div>
+</main>
+<script src="assets/data.js"></script><script src="assets/app.js"></script><script src="assets/nav.js"></script>
+<script>
+(function () {
+  var E = TIQ.esc, C = TIQDATA.certificates;
+  function fd(s) { return new Date(s + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }); }
+  document.getElementById('cl').innerHTML = C.map(function (c) {
+    return '<button class="cert" id="' + c.id + '" data-id="' + c.id + '"><span class="pill v">' + c.skill + '</span><h2 style="margin:8px 0 2px">' + E(c.title) + '</h2><div class="sm sub">' + E(c.issuer) + '</div><div class="xs faint" style="margin-top:6px">Issued ' + fd(c.issued) + ' · ' + c.id + '</div><div class="xs teal" style="margin-top:8px">Preview credential →</div></button>';
+  }).join('');
+  function show(id) {
+    var c = C.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+    TIQ.modal({ title: 'Credential preview', body: '<div class="cert-prev"><div class="xs teal" style="letter-spacing:2px">TIQ WORLD · CERTIFICATE OF COMPLETION</div><h2 style="font-size:22px;margin:12px 0 4px">' + E(c.title) + '</h2><div class="sub">awarded to <b style="color:var(--strong)">Priya Sample</b></div><div class="sm sub" style="margin-top:10px">Issued ' + fd(c.issued) + ' by ' + E(c.issuer) + '</div><div class="xs faint" style="margin-top:12px">ID ' + c.id + ' · dummy credential, not verifiable</div></div>',
+      note: 'Download and share are not part of this mock.' });
+  }
+  document.getElementById('cl').addEventListener('click', function (e) { var b = e.target.closest('[data-id]'); if (b) { history.replaceState(null, '', '#' + b.dataset.id); show(b.dataset.id); } });
+  if (location.hash) show(location.hash.slice(1));
+})();
+</script>
+</body></html>

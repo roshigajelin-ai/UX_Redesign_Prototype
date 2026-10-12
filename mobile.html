@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mobile view · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css">
+<style>
+ .phones{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+ .phone{width:390px;max-width:100%}
+ .phone .frame{border:10px solid var(--cert-line);border-radius:34px;overflow:hidden;background:var(--bg);height:760px}
+ .phone iframe{width:100%;height:100%;border:0;display:block}
+ .phone p{text-align:center;margin-top:8px}
+</style></head>
+<body data-page="docs">
+<main class="doc" style="max-width:1400px">
+ <p class="sm"><a class="teal" href="ia.html">← Navigation map</a> · <a class="teal" href="index.html">Back to mock</a></p>
+ <h1>Mobile view</h1>
+ <p class="sub">Each phone is the real mock page at phone width, so you can scroll and tap inside it. Resize your browser below 760px to see the same layout on the full pages.</p>
+ <div class="phones">
+  <div class="phone"><div class="frame"><iframe src="index.html" title="Home on mobile"></iframe></div><p class="sm sub">Home</p></div>
+  <div class="phone"><div class="frame"><iframe src="jobs.html" title="Jobs on mobile"></iframe></div><p class="sm sub">Jobs</p></div>
+  <div class="phone"><div class="frame"><iframe src="learn.html" title="Learn on mobile"></iframe></div><p class="sm sub">Learn</p></div>
+  <div class="phone"><div class="frame"><iframe src="profile.html" title="Profile on mobile"></iframe></div><p class="sm sub">Profile</p></div>
+ </div>
+</main>
+<script src="assets/nav.js"></script>
+</body></html>

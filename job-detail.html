@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job detail · TIQ World (design mock)</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-page="jobs">
+<main class="wrap">
+ <p class="sm" style="margin-bottom:10px"><a class="teal" href="jobs.html">← All jobs</a></p>
+ <div id="root"></div>
+</main>
+<script src="assets/data.js"></script><script src="assets/app.js"></script><script src="assets/charts.js"></script><script src="assets/jobui.js"></script><script src="assets/nav.js"></script>
+<script>
+(function () {
+  var D = TIQDATA, E = TIQ.esc, id = new URLSearchParams(location.search).get('id') || D.jobs[0].id, j = TIQ.jobs.get(id) || D.jobs[0];
+  var has = D.USER_SKILLS.indexOf(j.skill) >= 0;
+  var sim = D.jobs.filter(function (x) { return x.skill === j.skill && x.id !== j.id; }).slice(0, 3);
+  function draw() {
+    var ap = TIQ.jobs.isApplied(j.id), sv = TIQ.jobs.isSaved(j.id);
+    document.getElementById('root').innerHTML =
+      '<div class="cols two"><section class="stack">' +
+      '<div class="card"><div class="row" style="gap:14px;align-items:flex-start"><div class="logo-sq" style="width:60px;height:60px">' + j.skill + '</div><div class="grow"><h1>' + E(j.title) + '</h1><div class="sub sm">' + E(j.company) + ' · ' + j.location + ' · ' + j.mode + '</div>' +
+      '<div class="chips" style="margin-top:10px"><span class="pill">' + j.type + '</span><span class="pill">' + E(j.industry) + '</span><span class="pill">' + j.openings + ' openings</span></div></div></div>' +
+      '<div class="row" style="margin-top:16px"><button class="btn" id="ap"' + (ap ? ' disabled style="opacity:.6"' : '') + '>' + (ap ? 'Applied ✓' : 'Apply') + '</button><button class="btn line" id="sv">' + (sv ? '★ Saved' : '☆ Save') + '</button></div></div>' +
+      '<div class="card"><h2>About the role</h2><p class="sub">Perform ' + E(D.SKILLS[j.skill]) + ' on site assets, record findings and prepare inspection reports for Level III review. Sample copy for the design mock.</p></div>' +
+      '<div class="card"><h2>Your fit</h2><div class="list">' +
+      '<div class="row between"><span>' + (has ? '✓' : '✗') + ' ' + E(D.SKILLS[j.skill]) + '</span><span class="pill ' + (has ? 'y' : 'r') + '">' + (has ? 'Unverified' : 'Not on profile') + '</span></div>' +
+      '<div class="row between"><span>✗ ' + j.cert + ' certificate</span><span class="pill r">Missing</span></div>' +
+      '<div class="row between"><span>' + (j.exp <= 1 ? '✓' : '✗') + ' ' + j.exp + '+ years experience</span><span class="pill ' + (j.exp <= 1 ? 'y' : 'r') + '">1 year on profile</span></div></div>' +
+      '<div class="callout" style="margin-top:12px"><a class="teal" href="profile.html#skills">Verify your skills</a> or <a class="teal" href="learn.html#catalog">take a course</a> to raise your match.</div></div>' +
+      '<div class="card"><h2>How applying works</h2><div class="timeline">' +
+      '<div><b>1. Apply</b><div class="sm sub">One click with your TIQ profile.</div></div>' +
+      '<div><b>2. Job assessment</b><div class="sm sub">Appears in <a class="teal" href="learn.html#assessments">Learn → Assessments</a>.</div></div>' +
+      '<div><b>3. Interview</b><div class="sm sub">Invites show in <a class="teal" href="work.html#interviews">My Work → Interviews</a>.</div></div>' +
+      '<div><b>4. Contract</b><div class="sm sub">Managed in <a class="teal" href="work.html#contracts">My Work → Contracts</a>.</div></div></div></div>' +
+      '</section><aside class="stack side-right">' +
+      '<div class="card"><h2>Match</h2><div class="row"><div class="ring" style="--p:' + j.match + '"><span>' + j.match + '%</span></div><div class="sm sub">Illustrative score from skills, certificates, experience and mode.</div></div></div>' +
+      '<div class="card"><h2>Similar jobs</h2><div class="list">' + (sim.length ? sim.map(function (x) { return '<a class="item" href="job-detail.html?id=' + x.id + '"><div class="logo-sq">' + x.skill + '</div><div><b class="sm">' + E(x.title) + '</b><div class="xs sub">' + E(x.company) + ' · ' + x.location + '</div></div></a>'; }).join('') : '<div class="sub sm">None</div>') + '</div></div>' +
+      '</aside></div>';
+    document.getElementById('sv').onclick = function () { var on = TIQ.jobs.toggleSave(j.id); TIQ.toast(on ? 'Job saved' : 'Removed from saved'); draw(); };
+    var a = document.getElementById('ap'); if (!ap) a.onclick = function () { TIQ.applyModal(j, draw); };
+  }
+  draw();
+})();
+</script>
+</body></html>
